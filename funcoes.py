@@ -62,7 +62,20 @@ def posiciona_frota(dicnav):
 
     return ntab
 
-
+def afundados (dicnav, tabuleiro):
+    afundados=0
+    for nome, navios in dicnav.items():
+        for navio in navios:
+            afundado=True
+            for posicao in navio:
+                linha= posicao[0]
+                coluna= posicao[1]
+                if tabuleiro[linha][coluna] != 'X':
+                    afundado=False
+                    break
+            if afundado:
+                afundados+=1
+    return afundados
 
 
 
