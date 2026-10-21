@@ -1,3 +1,37 @@
+def define_posicoes(linha, coluna, orientacao, tamanho):
+    nlista=[]
+    i=0
+    while i<tamanho:
+
+        if orientacao=='vertical':
+            
+                nlista.append([linha, coluna])
+                linha=linha+1
+        else:
+            
+                nlista.append([linha, coluna])
+                coluna=coluna+1
+        i=i+1
+    return nlista
+def preenche_frota(frotadic, nome, linha, coluna, orientacao, tamanho):
+     
+    resultado = define_posicoes(linha, coluna, orientacao, tamanho)
+    if nome not in frotadic:
+        frotadic[nome] = []
+    frotadic[nome].append(resultado)
+    return frotadic
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    coordenadas = define_posicoes(linha, coluna, orientacao, tamanho)
+    for i, j in coordenadas:
+        if i > 9 or i < 0 or j > 9 or j < 0:
+            return False
+    for lista_posicao in frota.values():
+        for itens in lista_posicao:
+            for localizacoes in itens:
+                if localizacoes in coordenadas:
+                    return False
+    return True
+
 frota = {'porta-aviões' : [], 'navio-tanque' : [], 'contratorpedeiro' : [], 'submarino' : []}
 
 i = 0
