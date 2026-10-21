@@ -7,10 +7,10 @@ while i < 1:
     coluna = int(input('Quantas colunas?'))
     ori = int(input('Qual a orientação?'))
     if ori == 1:
-        orientacao == 'vertical'
+        orientacao = 'vertical'
     else:
-        orientacao == 'horizontal'
-    tamanho == 4
+        orientacao = 'horizontal'
+    tamanho = 4
     navio = posicao_valida(frota, linha, coluna, orientacao, tamanho)
     if navio == False:
          print('Esta posição não está válida!')
@@ -26,10 +26,10 @@ while j < 2:
     coluna = int(input('Quantas colunas?'))
     ori = int(input('Qual a orientação?'))
     if ori == 1:
-        orientacao == 'vertical'
+        orientacao = 'vertical'
     else:
-        orientacao == 'horizontal'
-    tamanho == 3
+        orientacao = 'horizontal'
+    tamanho = 3
     navio = posicao_valida(frota, linha, coluna, orientacao, tamanho)
     if navio == False:
          print('Esta posição não está válida!')
@@ -45,10 +45,10 @@ while k < 3:
     coluna = int(input('Quantas colunas?'))
     ori = int(input('Qual a orientação?'))
     if ori == 1:
-        orientacao == 'vertical'
+        orientacao = 'vertical'
     else:
-        orientacao == 'horizontal'
-    tamanho == 2
+        orientacao = 'horizontal'
+    tamanho = 2
     navio = posicao_valida(frota, linha, coluna, orientacao, tamanho)
     if navio == False:
          print('Esta posição não está válida!')
@@ -62,11 +62,12 @@ while l < 4:
     print('Insira as informações referentes ao navio submarino que possui tamanho 1')
     linha = int(input('Quantas linhas?'))
     coluna = int(input('Quantas colunas?'))
-    tamanho == 1
-    navio = posicao_valida(frota, linha, coluna, 'vertical', tamanho)
+    tamanho = 1
+    orientacao = 'vertical'
+    navio = posicao_valida(frota, linha, coluna, orientacao, tamanho)
     if navio == False:
          print('Esta posição não está válida!')
     else:
-        posicao = define_posicoes(linha, coluna, 'vertical', tamanho)
-        preenchimento = preenche_frota(frota, 'submarino', linha, coluna, 'vertical', tamanho)
+        posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+        preenchimento = preenche_frota(frota, 'submarino', linha, coluna, orientacao, tamanho)
         l += 1
