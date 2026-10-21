@@ -105,3 +105,4 @@ while l < 4:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         preenchimento = preenche_frota(frota, 'submarino', linha, coluna, orientacao, tamanho)
         l += 1
+print(frota)
