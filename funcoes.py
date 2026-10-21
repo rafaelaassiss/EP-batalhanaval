@@ -70,6 +70,9 @@ def afundados (dicnav, tabuleiro):
 
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     coordenadas = define_posicoes(linha, coluna, orientacao, tamanho)
+    for i, j in coordenadas:
+        if i > 9 or i < 0 or j > 9 or j < 0:
+            return False
     for lista_posicao in frota.values():
         for itens in lista_posicao:
             for localizacoes in itens:
