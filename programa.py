@@ -132,7 +132,6 @@ tabuleiro = monta_tabuleiros(tabjogador, taboponente)
 pessoa = 'jogando'
 jogadas = []
 while pessoa == 'jogando':
-    print(tabuleiro)
     i = 0
     while i < 1:
         linhajogo = int(input('Em qual linha você deseja atacar?'))
@@ -162,5 +161,4 @@ while pessoa == 'jogando':
     if verificacao == 10:
         pessoa = 'ganhou'
         tabuleiro = monta_tabuleiros(tabjogador, taboponente)
-        print(tabuleiro)
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
