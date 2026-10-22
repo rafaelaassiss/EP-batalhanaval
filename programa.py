@@ -178,32 +178,38 @@ taboponente = posiciona_frota(frota_oponente)
 tabjogador = posiciona_frota(frota)
 tabuleiro = monta_tabuleiros(tabjogador, taboponente)
 pessoa = 'jogando'
+jogadas = []
 
 while pessoa == 'jogando':
+    print(tabuleiro)
     i = 0
     while i < 1:
-        linhajogo = input('Em qual linha você deseja atacar?')
+        linhajogo = int(input('Em qual linha você deseja atacar?'))
         if linhajogo > 9 or linhajogo < 0:
             print('Linha inválida!')
-            linhajogo = input('Em qual linha você deseja atacar?')
-            i -= 1
-        else: i += 1
+            linhajogo = int(input('Em qual linha você deseja atacar?'))
+            i = 0
+        else:
+            i += 1
     j = 0
     while j < 1:
-        colunajogo = input('Em qual coluna você deseja atacar?')
+        colunajogo = int(input('Em qual coluna você deseja atacar?'))
         if colunajogo > 9 or colunajogo < 0:
             print('Coluna inválida!')
-            colunajogo = input('Em qual coluna você deseja atacar?')
-            j -= 1
+            colunajogo = int(input('Em qual coluna você deseja atacar?'))
+            j = 0
         else: j += 1
-    if linha, coluna in tabuleiro.items():
+    if [linhajogo, colunajogo] in jogadas:
         print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
         pessoa = 'jogando'
     else:
-        tabuleiro = faz_jogada(tabuleiro, linhajogo, colunajogo)
-        verificacao = afundados(frota, tabuleiro)
+        taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
+        verificacao = afundados(frota_oponente, taboponente)
         pessoa = 'jogando'
-    if verificacao == 
-# afundou todos os navios do oponente. Caso tenha afundado
-# todos os navios do oponente, o jogo deve imprimir
-# 'Parabéns! Você derrubou todos os navios do seu oponente!' e finalizar o jogo.
+        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
+        jogadas.append([linhajogo, colunajogo])
+    if verificacao == 10:
+        pessoa = 'ganhou'
+        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
+        print(tabuleiro)
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
