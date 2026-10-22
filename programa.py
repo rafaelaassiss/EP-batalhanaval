@@ -109,11 +109,10 @@ naviosfrota = [('porta-aviões', 4, 1), ('navio-tanque', 3, 2), ('contratorpedei
 for nome, tamanho, naviostot in naviosfrota:
     i = 0
     while i < naviostot:
-        print(f'Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}')
-        linha = int(input('Quantas linhas?'))
-        coluna = int(input('Quantas colunas?'))
+        linha = int(input())
+        coluna = int(input())
         if tamanho > 1:
-            ori = int(input('Qual a orientação? 1-vertical, 2-horizontal'))
+            ori = int(input())
             if ori == 1:
                 orientacao = 'vertical'
             else:
@@ -134,19 +133,19 @@ jogadas = []
 while pessoa == 'jogando':
     i = 0
     while i < 1:
-        linhajogo = int(input('Em qual linha você deseja atacar?'))
+        linhajogo = int(input())
         if linhajogo > 9 or linhajogo < 0:
             print('Linha inválida!')
-            linhajogo = int(input('Em qual linha você deseja atacar?'))
+            linhajogo = int(input())
             i = 0
         else:
             i += 1
     j = 0
     while j < 1:
-        colunajogo = int(input('Em qual coluna você deseja atacar?'))
+        colunajogo = int(input())
         if colunajogo > 9 or colunajogo < 0:
             print('Coluna inválida!')
-            colunajogo = int(input('Em qual coluna você deseja atacar?'))
+            colunajogo = int(input())
             j = 0
         else: j += 1
     if [linhajogo, colunajogo] in jogadas:
@@ -162,3 +161,4 @@ while pessoa == 'jogando':
         pessoa = 'ganhou'
         tabuleiro = monta_tabuleiros(tabjogador, taboponente)
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
+# print(f'Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}')
