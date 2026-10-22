@@ -121,8 +121,8 @@ while i < 1:
          print('Esta posição não está válida!')
     else:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
-        preenchimento = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, tamanho)
-        i += 1
+    preenchimento = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, tamanho)
+    i += 1
 j = 0
 while j < 2:
     print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
@@ -181,13 +181,11 @@ pessoa = 'jogando'
 jogadas = []
 
 while pessoa == 'jogando':
-    print(tabuleiro)
     i = 0
     while i < 1:
         linhajogo = int(input('Em qual linha você deseja atacar?'))
         if linhajogo > 9 or linhajogo < 0:
             print('Linha inválida!')
-            linhajogo = int(input('Em qual linha você deseja atacar?'))
             i = 0
         else:
             i += 1
@@ -196,7 +194,6 @@ while pessoa == 'jogando':
         colunajogo = int(input('Em qual coluna você deseja atacar?'))
         if colunajogo > 9 or colunajogo < 0:
             print('Coluna inválida!')
-            colunajogo = int(input('Em qual coluna você deseja atacar?'))
             j = 0
         else: j += 1
     if [linhajogo, colunajogo] in jogadas:
@@ -207,6 +204,7 @@ while pessoa == 'jogando':
         verificacao = afundados(frota_oponente, taboponente)
         pessoa = 'jogando'
         tabuleiro = monta_tabuleiros(tabjogador, taboponente)
+        print(tabuleiro)
         jogadas.append([linhajogo, colunajogo])
     if verificacao == 10:
         pessoa = 'ganhou'
