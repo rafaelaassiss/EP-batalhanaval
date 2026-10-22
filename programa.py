@@ -136,7 +136,6 @@ while pessoa == 'jogando':
         linhajogo = int(input())
         if linhajogo > 9 or linhajogo < 0:
             print('Linha inválida!')
-            linhajogo = int(input())
             i = 0
         else:
             i += 1
@@ -145,7 +144,6 @@ while pessoa == 'jogando':
         colunajogo = int(input())
         if colunajogo > 9 or colunajogo < 0:
             print('Coluna inválida!')
-            colunajogo = int(input())
             j = 0
         else: j += 1
     if [linhajogo, colunajogo] in jogadas:
