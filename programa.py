@@ -119,13 +119,18 @@ while pessoa == 'jogando':
     linhajogo = int(input())
     colunajogo = int(input())
     if linhajogo > 9 or linhajogo < 0 or colunajogo > 9 or colunajogo < 0:
-        pass
+        print('Linha inválida!') # RESTAURADO (Trata linha e coluna fora do mapa)
+    
     elif [linhajogo, colunajogo] in jogadas:
-        pass
+        print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!') # RESTAURADO
+    
     else:
         taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
         verificacao = afundados(frota_oponente, taboponente)
+        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
         jogadas.append([linhajogo, colunajogo])
-        if verificacao == 10:
-            pessoa = 'ganhou'
-            print('Parabéns! Você derrubou todos os navios do seu oponente!')
+    
+    if verificacao == 10:
+        pessoa = 'ganhou'
+        print(tabuleiro)
+        print('Parabéns! Você derrubou todos os navios do seu oponente!')
