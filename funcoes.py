@@ -13,7 +13,6 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
                 coluna=coluna+1
         i=i+1
     return nlista
-
 def preenche_frota(frotadic, nome, linha, coluna, orientacao, tamanho):
      
     resultado = define_posicoes(linha, coluna, orientacao, tamanho)
@@ -21,7 +20,6 @@ def preenche_frota(frotadic, nome, linha, coluna, orientacao, tamanho):
         frotadic[nome] = []
     frotadic[nome].append(resultado)
     return frotadic
-
 def faz_jogada (tabuleiro, linha, coluna):
     
     if tabuleiro[linha][coluna] == 1:
@@ -33,7 +31,6 @@ def faz_jogada (tabuleiro, linha, coluna):
 
         
     return tabuleiro
-
 def posiciona_frota(dicnav):
     ntab=[]
     for i in range(10):
@@ -52,7 +49,6 @@ def posiciona_frota(dicnav):
 
 
     return ntab
-
 def afundados (dicnav, tabuleiro):
     afundados=0
     for nome, navios in dicnav.items():
@@ -67,7 +63,6 @@ def afundados (dicnav, tabuleiro):
             if afundado:
                 afundados+=1
     return afundados
-
 def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     coordenadas = define_posicoes(linha, coluna, orientacao, tamanho)
     for i, j in coordenadas:
@@ -79,7 +74,6 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
                 if localizacoes in coordenadas:
                     return False
     return True
-
 def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
     texto = ''
     texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
