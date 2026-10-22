@@ -121,7 +121,7 @@ for nome, tamanho, naviostot in naviosfrota:
             orientacao = 'vertical'
 
         if posicao_valida(frota, linha, coluna, orientacao, tamanho) == False:
-            print('Esta posição não está válida!')
+            pass
         else:
             preenche_frota(frota, nome, linha, coluna, orientacao, tamanho)
             i += 1
@@ -135,7 +135,6 @@ while pessoa == 'jogando':
     while i < 1:
         linhajogo = int(input())
         if linhajogo > 9 or linhajogo < 0:
-            print('Linha inválida!')
             i = 0
         else:
             i += 1
@@ -143,11 +142,9 @@ while pessoa == 'jogando':
     while j < 1:
         colunajogo = int(input())
         if colunajogo > 9 or colunajogo < 0:
-            print('Coluna inválida!')
             j = 0
         else: j += 1
     if [linhajogo, colunajogo] in jogadas:
-        print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
         pessoa = 'jogando'
     else:
         taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
@@ -157,6 +154,5 @@ while pessoa == 'jogando':
         jogadas.append([linhajogo, colunajogo])
     if verificacao == 10:
         pessoa = 'ganhou'
-        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
         print('Parabéns! Você derrubou todos os navios do seu oponente!')
 # print(f'Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}')
