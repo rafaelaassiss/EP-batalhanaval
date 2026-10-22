@@ -176,38 +176,29 @@ while l < 4:
 
 taboponente = posiciona_frota(frota_oponente)
 tabjogador = posiciona_frota(frota)
-tabuleiro = monta_tabuleiros(tabjogador, taboponente)
-pessoa = 'jogando'
+
+jogando = True
 jogadas = []
 
-while pessoa == 'jogando':
-    i = 0
-    while i < 1:
+while jogando:
+    print(monta_tabuleiros(tabjogador, taboponente))
+    
+    linhajogo = int(input('Em qual linha você deseja atacar?'))
+    while linhajogo > 9 or linhajogo < 0:
+        print('Linha inválida!')
         linhajogo = int(input('Em qual linha você deseja atacar?'))
-        if linhajogo > 9 or linhajogo < 0:
-            print('Linha inválida!')
-            i = 0
-        else:
-            i += 1
-    j = 0
-    while j < 1:
+        
+    colunajogo = int(input('Em qual coluna você deseja atacar?'))
+    while colunajogo > 9 or colunajogo < 0:
+        print('Coluna inválida!')
         colunajogo = int(input('Em qual coluna você deseja atacar?'))
-        if colunajogo > 9 or colunajogo < 0:
-            print('Coluna inválida!')
-            j = 0
-        else: j += 1
     if [linhajogo, colunajogo] in jogadas:
         print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
-        pessoa = 'jogando'
     else:
-        taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
-        verificacao = afundados(frota_oponente, taboponente)
-        pessoa = 'jogando'
-        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
-        print(tabuleiro)
         jogadas.append([linhajogo, colunajogo])
-    if verificacao == 10:
-        pessoa = 'ganhou'
-        tabuleiro = monta_tabuleiros(tabjogador, taboponente)
-        print(tabuleiro)
-        print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
+        
+        if afundados(frota_oponente, taboponente) == 10:
+            jogando = False
+            print(monta_tabuleiros(tabjogador, taboponente))
+            print('Parabéns! Você derrubou todos os navios do seu oponente!')
