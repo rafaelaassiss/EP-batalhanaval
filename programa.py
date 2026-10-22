@@ -31,9 +31,80 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
                 if localizacoes in coordenadas:
                     return False
     return True
+def posiciona_frota(dicnav):
+    ntab=[]
+    for i in range(10):
+         linha=[]
+         for j in range(10):
+                linha.append(0)
+         ntab.append(linha)
 
+
+    for nome, navios in dicnav.items():
+         for navio in navios:
+                for posicao in navio:
+                    linha= posicao[0]
+                    coluna= posicao[1]
+                    ntab[linha][coluna]=1
+
+
+    return ntab
+def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+    texto = ''
+    texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+    texto += '_______________________________      _______________________________\n'
+
+    for linha in range(len(tabuleiro_jogador)):
+        jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+        oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+        texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+    return texto
+def faz_jogada (tabuleiro, linha, coluna):
+    
+    if tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = 'X'
+        
+    else:
+        tabuleiro[linha][coluna] = '-'
+    
+
+        
+    return tabuleiro
+def afundados (dicnav, tabuleiro):
+    afundados=0
+    for nome, navios in dicnav.items():
+        for navio in navios:
+            afundado=True
+            for posicao in navio:
+                linha= posicao[0]
+                coluna= posicao[1]
+                if tabuleiro[linha][coluna] != 'X':
+                    afundado=False
+                    break
+            if afundado:
+                afundados+=1
+    return afundados
 frota = {'porta-aviões' : [], 'navio-tanque' : [], 'contratorpedeiro' : [], 'submarino' : []}
-
+frota_oponente = {
+     'porta-aviões': [
+         [[9, 1], [9, 2], [9, 3], [9, 4]]
+     ],
+     'navio-tanque': [
+         [[6, 0], [6, 1], [6, 2]],
+         [[4, 3], [5, 3], [6, 3]]
+     ],
+     'contratorpedeiro': [
+         [[1, 6], [1, 7]],
+         [[0, 5], [1, 5]],
+         [[3, 6], [3, 7]]
+     ],
+     'submarino': [
+         [[2, 7]],
+         [[0, 6]],
+         [[9, 7]],
+         [[7, 6]]
+     ]
+}
 i = 0
 while i < 1:
     print('Insira as informações referentes ao navio porta-aviões que possui tamanho 4')
@@ -52,7 +123,6 @@ while i < 1:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         preenchimento = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, tamanho)
         i += 1
-
 j = 0
 while j < 2:
     print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
@@ -71,7 +141,6 @@ while j < 2:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         preenchimento = preenche_frota(frota, 'navio-tanque', linha, coluna, orientacao, tamanho)
         j += 1
-
 k = 0
 while k < 3:
     print('Insira as informações referentes ao navio contratorpedeiro que possui tamanho 2')
@@ -90,7 +159,6 @@ while k < 3:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         preenchimento = preenche_frota(frota, 'contratorpedeiro', linha, coluna, orientacao, tamanho)
         k += 1
-
 l = 0
 while l < 4:
     print('Insira as informações referentes ao navio submarino que possui tamanho 1')
@@ -105,4 +173,37 @@ while l < 4:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         preenchimento = preenche_frota(frota, 'submarino', linha, coluna, orientacao, tamanho)
         l += 1
-print(frota)
+
+taboponente = posiciona_frota(frota_oponente)
+tabjogador = posiciona_frota(frota)
+tabuleiro = monta_tabuleiros(tabjogador, taboponente)
+pessoa = 'jogando'
+
+while pessoa == 'jogando':
+    i = 0
+    while i < 1:
+        linhajogo = input('Em qual linha você deseja atacar?')
+        if linhajogo > 9 or linhajogo < 0:
+            print('Linha inválida!')
+            linhajogo = input('Em qual linha você deseja atacar?')
+            i -= 1
+        else: i += 1
+    j = 0
+    while j < 1:
+        colunajogo = input('Em qual coluna você deseja atacar?')
+        if colunajogo > 9 or colunajogo < 0:
+            print('Coluna inválida!')
+            colunajogo = input('Em qual coluna você deseja atacar?')
+            j -= 1
+        else: j += 1
+    if linha, coluna in tabuleiro.items():
+        print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
+        pessoa = 'jogando'
+    else:
+        tabuleiro = faz_jogada(tabuleiro, linhajogo, colunajogo)
+        verificacao = afundados(frota, tabuleiro)
+        pessoa = 'jogando'
+    if verificacao == 
+# afundou todos os navios do oponente. Caso tenha afundado
+# todos os navios do oponente, o jogo deve imprimir
+# 'Parabéns! Você derrubou todos os navios do seu oponente!' e finalizar o jogo.
