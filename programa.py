@@ -94,9 +94,9 @@ tabjogador = posiciona_frota(frota)
 
 jogando = True
 jogadas = []
+print(monta_tabuleiros(tabjogador, taboponente))
 
 while jogando:
-    print(monta_tabuleiros(tabjogador, taboponente))
     
     linhajogo = int(input('Em qual linha você deseja atacar?'))
     while linhajogo > 9 or linhajogo < 0:
@@ -107,13 +107,15 @@ while jogando:
     while colunajogo > 9 or colunajogo < 0:
         print('Coluna inválida!')
         colunajogo = int(input('Em qual coluna você deseja atacar?'))
+
     if [linhajogo, colunajogo] in jogadas:
         print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
+        print(monta_tabuleiros(tabjogador, taboponente))
+        
     else:
         jogadas.append([linhajogo, colunajogo])
         taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
         
         if afundados(frota_oponente, taboponente) == 10:
             jogando = False
-            print(monta_tabuleiros(tabjogador, taboponente))
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
