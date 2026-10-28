@@ -36,8 +36,8 @@ while i < 1:
          print('Esta posição não está válida!')
     else:
         posicao = define_posicoes(linha, coluna, orientacao, tamanho)
-    preenchimento = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, tamanho)
-    i += 1
+        preenchimento = preenche_frota(frota, 'porta-aviões', linha, coluna, orientacao, tamanho)
+        i += 1
 j = 0
 while j < 2:
     print('Insira as informações referentes ao navio navio-tanque que possui tamanho 3')
@@ -111,7 +111,7 @@ while jogando:
     if [linhajogo, colunajogo] in jogadas:
         print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
         print(monta_tabuleiros(tabjogador, taboponente))
-        
+
     else:
         jogadas.append([linhajogo, colunajogo])
         taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
