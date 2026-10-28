@@ -110,8 +110,6 @@ while jogando:
 
     if [linhajogo, colunajogo] in jogadas:
         print(f'A posição linha {linhajogo} e coluna {colunajogo} já foi informada anteriormente!')
-        print(monta_tabuleiros(tabjogador, taboponente))
-
     else:
         jogadas.append([linhajogo, colunajogo])
         taboponente = faz_jogada(taboponente, linhajogo, colunajogo)
@@ -119,3 +117,5 @@ while jogando:
         if afundados(frota_oponente, taboponente) == 10:
             jogando = False
             print('Parabéns! Você derrubou todos os navios do seu oponente!')
+        else:
+            print(monta_tabuleiros(tabjogador, taboponente))
